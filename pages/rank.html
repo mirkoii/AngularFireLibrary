@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="bookObj in books | orderBy:'Rank'   ">
+            <tr ng-repeat="bookObj in books | orderBy:['Rank'] :true">
                 <td>{{bookObj.Title}}</td>
                 <td>{{bookObj.Author}}</td>
                 <td>{{bookObj.Price | currency }}</td>
