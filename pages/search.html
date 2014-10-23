@@ -68,7 +68,7 @@
                     <th>Genre</th>
                     <th>Rank</th>
                     <th>ISBN</th>
-                    <th>Borrower</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -80,7 +80,7 @@
                     <td>{{bookObj.Rank}}</td>
                     <td>{{bookObj.ISBN}}</td>
                     <td>
-                        {{bookObj.Borrower}}<a class="btn btn-warning" ng-click="changeStatus(bookObj.ISBN)">
+                        <a class="btn btn-warning" ng-click="changeStatus(bookObj.ISBN)">
                             <i class="icon-remove-sign"></i>Borrow it
                         </a>
                     </td>
