@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- define angular app -->
+<html ng-app="bookApp">
+<head>
+    <title></title>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/css/bootstrapvalidator.css" />
+ 
+    <script src="script/angular.js"></script>
+    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+    <script src="script/angularfire.min.js"></script>
+    <script src="script/jsBooks.js"></script>
+    <link href="content/style.css" rel="stylesheet" />
+
+
+
+
+    <!-- SCROLLS -->
+    <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+    <!-- SPELLS -->
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+ 
+    <script src="path/to/js/star-rating.min.js" type="text/javascript"></script>
+    <link href="path/to/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+
+</head>
+<!-- define angular controller -->
+<body ng-controller="mainController">
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Angular - Firebase Library system. </a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#"><i class="fa fa-search"></i> Search</a></li>
+                <li><a href="#add"><i class="fa fa-book fa-fw"></i> Add new/delete book</a></li>
+                <li><a href="#rank"><i class="fa  fa-sort-amount-asc"></i> High Ranking</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="main">
+
+        <!-- angular templating -->
+        <!-- this is where content will be injected -->
+        <div ng-view></div>
+
+    </div>
+
+    <footer class="text-center">
+        <p> © Mehdi Rostami - 2014 Library system with <a href="http://www.angularjs.org">Angularjs </a> & <a href="http://www.firebase.com">Firebase </a></p>
+    </footer>
+
+</body>
+</html>

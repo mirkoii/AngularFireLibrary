@@ -1,0 +1,114 @@
+<style type="text/css">
+    div#tooltip a span {
+        display: none;
+    }
+
+    div#tooltip a:hover span {
+        display: block;
+        position: relative;
+        width: 125px;
+        padding: 5px;
+        margin: 10px;
+        z-index: 100;
+        color: black;
+        background-color: #FFFFCC;
+        border: 1px solid #ccc;
+        font: 10px Verdana, sans-serif;
+        text-align: center;
+    }
+
+    div#tooltip a {
+        position: relative;
+    }
+
+        div#tooltip a span {
+            display: none;
+        }
+
+        div#tooltip a:hover span {
+            display: block;
+            position: absolute;
+            width: 100px;
+            color: black;
+            background-color: #FFFFCC;
+            border: 1px solid #ccc;
+            font: 10px Verdana, sans-serif;
+            text-align: center;
+        }
+
+        div#tooltip a:hover {
+            text-indent: 0;
+        }
+
+    #tooltip button {
+        border-radius: 50%;
+        border: 1px solid black;
+        padding-top: 3px;
+    }
+</style>
+
+<div class="jumbotron text-center" ng-app="bookApp">
+
+    <div class="table-responsive" ng-controller="BookCtrl">
+
+        <form id="isbnForm" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label">Search</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" ng-model="search" name="isbn" id="isbn" placeholder="Book search Title, Author, ISBN..." />
+                </div>
+            </div>
+        </form>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Genre</th>
+                    <th>Rank</th>
+                    <th>ISBN</th>
+                    <th>Borrower</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bookObj in books | filter: searchAll('Title','Author','Genre','ISBN', search) ">
+                    <td>{{bookObj.Title}}</td>
+                    <td>{{bookObj.Author}}</td>
+                    <td>{{bookObj.Price | currency }}</td>
+                    <td>{{bookObj.Genre}}</td>
+                    <td>{{bookObj.Rank}}</td>
+                    <td>{{bookObj.ISBN}}</td>
+                    <td>
+                        {{bookObj.Borrower}}<a class="btn btn-warning" ng-click="changeStatus(bookObj.ISBN)">
+                            <i class="icon-remove-sign"></i>Borrow it
+                        </a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#isbnForm').bootstrapValidator({
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                isbn: {
+                    validators: {
+                        isbn: {
+                            message: ' '
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>

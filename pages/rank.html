@@ -1,0 +1,28 @@
+<div class="jumbotron text-center" ng-app="bookApp" ng-controller="BookCtrl">
+
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Price</th>
+                <th>Genre</th>
+                <th>Rank</th>
+                <th>ISBN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="bookObj in books | orderBy:'Rank'   ">
+                <td>{{bookObj.Title}}</td>
+                <td>{{bookObj.Author}}</td>
+                <td>{{bookObj.Price | currency }}</td>
+                <td>{{bookObj.Genre}}</td>
+                <td>{{bookObj.Rank}}</td>
+                <td>{{bookObj.ISBN}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

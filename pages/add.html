@@ -1,0 +1,63 @@
+ 
+
+
+<div class="jumbotron text-center">
+    <div class="table-responsive" ng-controller="BookCtrl" style="text-align:left" >
+        <form name="bookForm" class="well" ng-submit="submitForm()" novalidate>
+            <div class="form-group" ng-class="{ 'has-error' : bookForm.Title.$invalid && !bookForm.Title.$dirty }">
+                <label>Title</label>
+                <input type="text" name="Title" class="form-control" ng-model="newBook.Title" required autofocus placeholder="Title" style="width:400px;">
+                <p ng-show="bookForm.Title.$invalid && !bookForm.Title.$pristine" class="help-block">Title is required.</p>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error' : bookForm.Author.$invalid && !bookForm.Author.$dirty }">
+                <label>Author</label>
+                <input type="text" name="Author" class="form-control" ng-model="newBook.Author" required placeholder="Author" style="width:400px;">
+                <p ng-show="bookForm.Author.$invalid && !bookForm.Author.$pristine" class="help-block">Author is required.</p>
+            </div>
+            <label>Price</label>
+            <input type="number" ng-model="newBook.Price" min="0" placeholder="Price" class="form-control" style="width:100px;" />
+            <label>Genre</label>
+            <input type="text" ng-model="newBook.Genre" placeholder="Genre" class="form-control" style="width:400px;" />
+            <label>Rank</label>
+            <input type="number" maxlength="1" max="6" min="1" ng-model="newBook.Rank" placeholder="Rank" class="form-control" style="width:100px;" />
+            <div class="form-group" ng-class="{ 'has-error' : bookForm.ISBN.$invalid && !bookForm.ISBN.$dirty }">
+                <label>ISBN</label>
+                <input type="text" name="ISBN" class="form-control" ng-model="newBook.ISBN" required placeholder="ISBN" style="width:400px;">
+                <p ng-show="bookForm.ISBN.$invalid && !bookForm.ISBN.$pristine" class="help-block">ISBN is required.</p>
+            </div>
+
+            <br />
+            <button type="submit" ng-disabled="bookForm.$invalid" value="add" ng-click="add(newBook.ISBN)" class="btn btn-primary">Add</button>
+        </form>
+
+
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Price</th>
+                    <th>Genre</th>
+                    <th>Rank</th>
+                    <th>ISBN</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="bookObj in books">
+                    <td>{{bookObj.Title}}</td>
+                    <td>{{bookObj.Author}}</td>
+                    <td>{{bookObj.Price | currency }}</td>
+                    <td>{{bookObj.Genre}}</td>
+                    <td>{{bookObj.Rank}}</td>
+                    <td>{{bookObj.ISBN}}</td>
+                    <td>
+                        <a href="#/add" ng-click="delete(bookObj.ISBN)" class="btn btn-warning">delete</a>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
